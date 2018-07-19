@@ -1,0 +1,48 @@
+.preview-warp{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  .preview-img-container{
+    flex: 1;
+  }
+  .stat {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    line-height: 20px;
+    color: #fff;
+    background: #000;
+    opacity: .5;
+    padding: 3px;
+  }
+  .canvasWrapper {
+    position: relative;
+    cursor: pointer;
+    width: 900px;
+    height: 700px;
+  }
+  .preview-tools{
+    margin-top: -32px;
+    width: 54px;
+    display: flex;
+    flex-direction: column;
+    background:rgba(250,250,250,1);
+    .img-warp{
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #f5eeee;
+      img{
+        width: 24px;
+        height: 24px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        :hover{
+          background: white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@function px($px, $base-font-size: 75px) {
+    @if (unitless($px * 1px)) {
+        @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+        @return px($px * 1px + 0px); 
+    } @else if (unit($px * 1px) == rem) {
+        @return $px * 1px;
+    }
+    @return ( $px * 1px / 1 / $base-font-size) * 1rem;
+}
+.login {
+  width: 100%;
+  padding-top: px(120);
+  min-height: px(1334);
+  background:linear-gradient(180deg,rgba(25,144,243,1),rgba(73,166,243,1));
+  .title-logo {
+    margin: 0 auto;
+    margin-bottom: px(100);
+    width: px(380);
+    height: px(160);
+    background: url('../../../assets/web/title-logo.png') no-repeat;
+    background-size: contain;
+  }
+  .ant-form-explain {
+    width: px(580);
+    margin: 0 auto;
+  }
+  .ant-form-item-children {
+    margin: 0 auto;
+    display: block;
+    width: px(580);
+    height: px(96);
+  }
+  input {
+    padding-left: px(98);
+    width: px(580);
+    height: px(96);
+    background:rgba(78,174,255,0.7);
+    border-radius: px(48);
+    color: #fff;
+    border: 0px;
+    outline:none;
+    cursor: pointer;
+  }
+  button {
+    color: #fff;
+    border: none;
+    outline:none;
+    padding: none;
+    cursor: pointer;
+  }
+  .user-mobile {
+    margin-bottom: px(28);
+  }
+  .user-password {
+    margin-bottom: px(120);
+  }
+  .login-submit {
+    margin-top: px(120);
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: px(580);
+    height: px(96);
+    background:rgba(255,255,255,1);
+    border-radius: px(48);
+    font-size:px(32);
+    color:rgba(24,143,242,1);
+    line-height:px(96);
+  }
+  .input-mobile-icon {
+    position: absolute;
+    top: px(24);
+    left: px(32);
+    width: px(48);
+    height: px(48);
+    background: url('../../../assets/web/input-mobile-icon.png') no-repeat;
+    background-size: contain;
+  }
+  .input-password-icon {
+    position: absolute;
+    top: px(24);
+    left: px(32);
+    width: px(48);
+    height: px(48);
+    background: url('../../../assets/web/input-password-icon.png') no-repeat;
+    background-size: contain;
+  }
+  input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #333;
+  }
+  input::-webkit-input-placeholder{
+    font-size:px(28);
+    color:rgba(216,237,255,1);
+  }
+  .ant-form-item-children {
+    font-size:px(28);
+    position: relative;
+  }
+}
+

@@ -1,0 +1,66 @@
+@import '../../../mixins/index';
+
+.login-warp{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .login-title{
+    font-size:20px;
+    font-family:PingFangSC-Medium;
+    color:rgba(0,0,0,0.65);
+    text-align: left;
+  }
+  .headers{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: flex-start;
+    top: 0;
+    img{
+      width:340px;
+      height: 40px;
+      margin-left: 360px;
+    }
+  }
+  .login-body-warp{
+    box-sizing: border-box;
+    height: 100%;
+    padding: 80px 0 0 0;
+    .login-body{
+      position: relative;
+      height: 100%;
+      background: url(../../../assets/img/background.png) no-repeat 0 0;
+      background-size: 100% 100%;
+    }
+  }
+  .footer{
+    display: none;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    bottom: 0;
+    span{
+      font-size: 14px;
+      font-family: PingFangSC-Regular;
+      color: #AFAFAF;
+    }
+  }
+  .form-btn-login {
+    background: #4A90E2;
+    color:white;
+    border-radius: 27px;
+    font-size: 20px;
+    letter-spacing: 0;
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+
+
