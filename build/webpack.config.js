@@ -6,12 +6,15 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const px2rem = require('postcss-px2rem');
 
 const assetsPath = (...relativePath) => join(__dirname, '..', ...relativePath)
 const isFontFile = url => /\.(woff2?|eot|ttf|otf)(\?.*)?$/.test(url)
 const isProd = process.env.BABEL_ENV === 'production'
 const isReport = process.env.REPORT === 'true'
 const target = process.env.TARGET ? process.env.TARGET : 'admin'
+let postCssPlugins = [ require('autoprefixer')() ]
+target === 'web' && postCssPlugins.push(px2rem({ remUnit: 75 }))
 
 const getEntry = (target) => {
   let entry = {
@@ -88,9 +91,7 @@ let webpackConfig = {
         {
           loader: 'postcss-loader',
           options: {
-            plugins: (loader) => [
-                require('autoprefixer')(),
-            ]
+            plugins: (loader) => postCssPlugins
           }
         },
         'sass-loader',
