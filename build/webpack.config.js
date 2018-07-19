@@ -1,10 +1,11 @@
 const join = require('path').join
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const assetsPath = (...relativePath) => join(__dirname, '..', ...relativePath)
 const isFontFile = url => /\.(woff2?|eot|ttf|otf)(\?.*)?$/.test(url)
@@ -80,34 +81,20 @@ let webpackConfig = {
       include: [assetsPath('src')]
     },
     {
-      test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [`css-loader?${isProd ? 'minimize=true' : ''}`, {
+      test: /\.(sa|sc|c)ss$/,
+      use: [
+        isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+        'css-loader',
+        {
           loader: 'postcss-loader',
           options: {
-            sourceMap: isProd ? false : 'inline',
-            plugins: [
-              autoprefixer({
-                browsers: ['last 2 versions', 'Android >= 4.0', 'iOS >= 7.0']
-              })
+            plugins: (loader) => [
+                require('autoprefixer')(),
             ]
           }
-        }, {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: !isProd,
-            includePaths: [assetsPath('src')]
-          }
-        }]
-      })
-    },
-    {
-      test: /\.css$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [`css-loader?${isProd ? 'minimize=true' : ''}`]
-      })
+        },
+        'sass-loader',
+      ]
     },
     {
       test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
@@ -134,7 +121,11 @@ let webpackConfig = {
     },
     minimize: isProd,
     minimizer: [
-      new UglifyJsPlugin({})
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true
+      }),
+      new OptimizeCSSAssetsPlugin({})
     ],
     splitChunks:{
       chunks: 'async',
@@ -162,10 +153,9 @@ let webpackConfig = {
       NODE_ENV: JSON.stringify(isProd ? 'production' : 'development'),
       DEBUG: !isProd
     }),
-    new ExtractTextPlugin({
-      disable: !isProd,
-      allChunks: true,
-      filename: 'css/[name].[chunkhash:7].css'
+    new MiniCssExtractPlugin({
+      filename: isProd ? '[name].[hash].css' : '[name].css',
+      chunkFilename: isProd ? '[name].[hash].css' : '[name].css'
     }),
     new HtmlWebpackPlugin({
       minify: isProd ? {
