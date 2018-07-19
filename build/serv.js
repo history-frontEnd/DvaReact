@@ -27,9 +27,7 @@ compiler.plugin('compilation', function (compilation) {
     // cb()
   })
 })
-app.use(history({
-  // index: '/index.html'
-}))
+app.use(history({}))
 app.use(async (ctx, next) => {
   await koaDevMiddleware(ctx.req, {
     end: (content) => {

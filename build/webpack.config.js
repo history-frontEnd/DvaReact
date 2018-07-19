@@ -31,7 +31,7 @@ const getOutput = (target) => {
     chunkFilename: '[name].chunk.js',
     publicPath: '/'
   }, isProd ? {
-    publicPath: './',
+    publicPath: '/',
     filename: 'js/[name].[chunkhash:7].js',
     chunkFilename: 'js/[name].chunk.[chunkhash:7].js'
   } : {})

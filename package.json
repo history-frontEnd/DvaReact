@@ -12,7 +12,8 @@
     "build:admin": "cross-env TARGET=admin NODE_ENV=production BABEL_ENV=production node build/build.js",
     "build": "cross-env npm run clean && run-p build:**",
     "report": "cross-env REPORT=true npm run build:admin",
-    "static": "cross-env PORT=8003 node build/staticServe.js"
+    "web": "cross-env TARGET=web PORT=8003 node build/staticServe.js",
+    "admin": "cross-env TARGET=admin PORT=8003 node build/staticServe.js"
   },
   "dependencies": {
     "antd": "^3.6.4",
@@ -20,12 +21,9 @@
     "dva": "^2.1.0",
     "dva-loading": "^2.0.3",
     "dva-model-extend": "^0.1.2",
-    "jsonp": "^0.2.1",
     "nprogress": "^0.2.0",
-    "plupload": "^2.3.6",
     "rc-util": "4.5.1",
     "react": "^16.2.0",
-    "react-countup": "^3.0.3",
     "react-dom": "^16.2.0",
     "styled-components": "^3.3.3"
   },

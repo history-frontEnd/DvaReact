@@ -4,7 +4,6 @@ import { connect } from 'dva'
 import Button from 'antd/lib/button'
 import Input from 'antd/lib/input'
 import Form from 'antd/lib/form'
-// import { Link } from 'dva/router'
 const FormItem = Form.Item
 require('./index.scss')
 class Login extends React.Component {
