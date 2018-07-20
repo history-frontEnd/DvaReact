@@ -7,7 +7,9 @@ const path = require('path')
 const staticPath = path.join(__dirname, `../dist/${target}`)
 app.use(serve(staticPath))
 app.use( async ( ctx ) => {
-  ctx.body = `try http://localhost:${port}/${target}/index.html`
+  // ctx.body = `try http://localhost:${port}/${target}/index.html`
+  // ctx.set('Content-Type', 'text/plain')
+  ctx.set('content-encoding', 'gzip')
 })
 app.listen(port, () => {
   console.log(`> serve statice: ${staticPath}`)

@@ -1,26 +1,30 @@
 const join = require('path').join
 const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const px2rem = require('postcss-px2rem');
+const pxtorem = require('postcss-pxtorem');
+const autoprefixer = require('autoprefixer');
+const compressionPlugin = require('compression-webpack-plugin');
 
 const assetsPath = (...relativePath) => join(__dirname, '..', ...relativePath)
 const isFontFile = url => /\.(woff2?|eot|ttf|otf)(\?.*)?$/.test(url)
 const isProd = process.env.BABEL_ENV === 'production'
 const isReport = process.env.REPORT === 'true'
 const target = process.env.TARGET ? process.env.TARGET : 'admin'
-let postCssPlugins = [ require('autoprefixer')() ]
-target === 'web' && postCssPlugins.push(px2rem({ remUnit: 75 }))
+const postCssPlugins = [
+  autoprefixer({
+    browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
+  })
+]
+target === 'web' && postCssPlugins.push(pxtorem({ rootValue: 75, propWhiteList: [] }))
 
 const getEntry = (target) => {
   let entry = {
     [target]: [assetsPath(`src/${target}-entry`)],
-    'polyfill': [assetsPath(`src/_polyfill`)],
-    // 'plupload': [assetsPath(`src/utils/plupload.full.min`)],
+    'polyfill': [assetsPath(`src/_polyfill`)]
   }
   return Object.keys(entry).reduce((entry, key) => ({
     ...entry,
@@ -98,6 +102,25 @@ let webpackConfig = {
       ]
     },
     {
+      test: /\.less$/,
+      use: [
+        isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: (loader) => postCssPlugins
+          }
+        },
+        {
+          loader: 'less-loader',
+          options: {
+            modifyVars: { "@primary-color": "#1DA57A" },
+          }
+        }
+      ]
+    },
+    {
       test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
       loader: 'url-loader',
       query: {
@@ -159,14 +182,32 @@ let webpackConfig = {
       chunkFilename: isProd ? '[name].[hash].css' : '[name].css'
     }),
     new HtmlWebpackPlugin({
+      inject: true,
       minify: isProd ? {
-        html5: false
+        html5: false,
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
       } : {},
       // chunks: (isProd ? ['manifest'] : ['manifest']).concat([target, 'vendor2']),
       filename: `index.html`,
       template: assetsPath('src/_tpl.html')
     }),
   ].concat(isProd ? [
+    new compressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: new RegExp('\\.(js|css)$'),
+      threshold: 10240,
+      minRatio: 0.8
+    })
   ] : [
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin()
