@@ -13,13 +13,15 @@ const assetsPath = (...relativePath) => join(__dirname, '..', ...relativePath)
 const isFontFile = url => /\.(woff2?|eot|ttf|otf)(\?.*)?$/.test(url)
 const isProd = process.env.BABEL_ENV === 'production'
 const isReport = process.env.REPORT === 'true'
-const target = process.env.TARGET ? process.env.TARGET : 'admin'
 const postCssPlugins = [
   autoprefixer({
     browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
   })
 ]
-target === 'web' && postCssPlugins.push(pxtorem({ rootValue: 75, propWhiteList: [] }))
+const target = process.env.TARGET ? process.env.TARGET : 'admin'
+if (target === 'web') {
+  postCssPlugins.push(pxtorem({ rootValue: 75, propWhiteList: [] }))
+}
 
 const getEntry = (target) => {
   let entry = {
@@ -85,7 +87,7 @@ let webpackConfig = {
     {
       test: /\.jsx?$/,
       use: 'babel-loader',
-      include: [assetsPath('src')]
+      include: [assetsPath('src')],
     },
     {
       test: /\.(sa|sc|c)ss$/,
@@ -115,7 +117,10 @@ let webpackConfig = {
         {
           loader: 'less-loader',
           options: {
-            modifyVars: { "@primary-color": "#1DA57A" },
+            modifyVars: {
+              "@primary-color": "#1DA57A",
+              "hd": "2px",
+            },
           }
         }
       ]
@@ -198,7 +203,7 @@ let webpackConfig = {
       } : {},
       // chunks: (isProd ? ['manifest'] : ['manifest']).concat([target, 'vendor2']),
       filename: `index.html`,
-      template: assetsPath('src/_tpl.html')
+      template: assetsPath(`src/_${target}.html`)
     }),
   ].concat(isProd ? [
     new compressionPlugin({

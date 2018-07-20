@@ -1,12 +1,3 @@
-@function px($px, $base-font-size: 75px) {
-    @if (unitless($px * 1px)) {
-        @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
-        @return px($px * 1px + 0px); 
-    } @else if (unit($px * 1px) == rem) {
-        @return $px * 1px;
-    }
-    @return ( $px * 1px / 1 / $base-font-size) * 1rem;
-}
 #app, .web-container {
   margin: 0 auto;
   width: 10rem;
@@ -26,5 +17,5 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: px(400);
+  margin-top: 400px;
 }

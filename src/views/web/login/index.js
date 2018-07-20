@@ -4,12 +4,12 @@ import { connect } from 'dva'
 import Button from 'antd/lib/button'
 import Input from 'antd/lib/input'
 import Form from 'antd/lib/form'
+// import { Toast } from 'antd-mobile'
 const FormItem = Form.Item
 require('./index.scss')
 class Login extends React.Component {
   login = (e) => {
     e.preventDefault()
-
     let { dispatch, form } = this.props
     form.validateFieldsAndScroll((errors, values) => {
       if (errors) {
@@ -17,6 +17,8 @@ class Login extends React.Component {
       }
       dispatch({ type: 'login/login', payload: values })
     })
+  }
+  componentDidMount () {
   }
   render () {
     const { form } = this.props

@@ -15,7 +15,10 @@
       "polyfill": false,
       "regenerator": true
     }],
-    ["import", { "libraryName": "antd", "libraryDirectory": "lib", "style": "css" }]
+    ["import", [
+      {"libraryName": "antd", "libraryDirectory": "lib", "style": "css" },
+      {"libraryName": "antd-mobile", "style": true}
+    ]],
   ],
   "env": {
     "development":{

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { withRouter, routerRedux } from 'dva/router'
-import { Layout } from 'antd'
 import 'themes/web/index.scss'
 import { Spin } from 'antd'
 // const { Header, Content, Sider } = Layout
