@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Switch, Route, Redirect, routerRedux } from 'dva/router'
+import {Redirect, Route, routerRedux, Switch} from 'dva/router'
 import dynamic from 'dva/dynamic'
-// import Admin from '../views/admin/Index'
 import Admin from '../views/admin/layout'
 
-const { ConnectedRouter } = routerRedux
-const Routers = function ({ history, app }) {
+const {ConnectedRouter} = routerRedux
+const Routers = function ({history, app}) {
   const routes = []
   routes.push({
     path: `/website`,
@@ -23,12 +22,12 @@ const Routers = function ({ history, app }) {
     <ConnectedRouter history={history}>
       <Admin>
         <Switch>
-          <Route exact path="/" render={() => (<Redirect to="/website" />)} />
+          <Route exact path="/" render={() => (<Redirect to="/website"/>)}/>
           {
-            routes.map(({ path, ...dynamics }, key) => (<Route key={key}
+            routes.map(({path, ...dynamics}, key) => (<Route key={key}
               exact
               path={path}
-              component={dynamic({ app, ...dynamics })}
+              component={dynamic({app, ...dynamics})}
             />))
           }
         </Switch>

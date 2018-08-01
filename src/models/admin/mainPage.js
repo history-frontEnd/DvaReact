@@ -1,8 +1,7 @@
 import modelExtend from 'dva-model-extend'
-import { model } from './extend'
+import {model} from './extend'
 import {message} from 'antd'
-import { getPatientList, getPatientDetails, savePatientDetails, getImgList } from '../../services/admin/patientList'
-// import { routerRedux } from 'dva/router'
+import {getImgList, getPatientDetails, getPatientList, savePatientDetails} from '../../services/admin/patientList'
 
 export default modelExtend(model, {
   namespace: 'mainPageBody',
@@ -57,18 +56,9 @@ export default modelExtend(model, {
   },
   subscriptions: {},
   effects: {
-    // * updateKeyList ({
-    //   payload
-    // }, { put, call, select, take }) {
-    //   console.log('invoke effects updateKeyList')
-    //   yield put({
-    //     type: 'updateKeyList',
-    //     payload
-    //   })
-    // },
     * getPatientList ({
       payload
-    }, { put, call, select, take }) {
+    }, {put, call, select, take}) {
       let resp = yield call(getPatientList, {
         page: payload.page,
         pagesize: payload.pagesize
@@ -85,7 +75,7 @@ export default modelExtend(model, {
     },
     * getPatientDetails ({
       payload
-    }, { put, call, select, take }) {
+    }, {put, call, select, take}) {
       let {id, ...rest} = payload
       let resp = yield call(getPatientDetails, {
         id
@@ -136,7 +126,7 @@ export default modelExtend(model, {
     },
     * savePatientDetails ({
       payload
-    }, { put, call, select, take }) {
+    }, {put, call, select, take}) {
       let {images, ...rest} = payload
       let resp = yield call(savePatientDetails, {
         images: images.join(','),
@@ -170,7 +160,7 @@ export default modelExtend(model, {
     },
     * getImgList ({
       payload
-    }, { put, call, select, take }) {
+    }, {put, call, select, take}) {
       let resp = yield call(getImgList, {
         ...payload
       })

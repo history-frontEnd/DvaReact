@@ -3,7 +3,6 @@ import { model } from './extend'
 import { routerRedux } from 'dva/router'
 import { message } from 'antd'
 import { login } from '../../services/admin/login'
-// const MESSAGE = message
 
 export default modelExtend(model, {
   namespace: 'website',

@@ -11,21 +11,6 @@ const Routers = function ({ history, app }) {
     models: () => [import(`../models/web/login`)],
     component: () => import(`../views/web/login`)
   })
-  routes.push({
-    path: `/uploader`,
-    models: () => [import(`../models/web/login`)],
-    component: () => import(`../views/web/uploader`)
-  })
-  routes.push({
-    path: `/list/:firstImgId`,
-    models: () => [import(`../models/web/login`)],
-    component: () => import(`../views/web/uploader/list`)
-  })
-  routes.push({
-    path: `/succ`,
-    models: () => [import(`../models/web/login`)],
-    component: () => import(`../views/web/uploader/succ`)
-  })
   return (
     <ConnectedRouter history={history}>
       <Web>

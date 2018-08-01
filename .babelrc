@@ -9,7 +9,7 @@
   ],
   "plugins": [
     "add-module-exports",
-    "transform-decorators-legacy", 
+    "transform-decorators-legacy",
     ["transform-runtime", {
       "helpers": false,
       "polyfill": false,
@@ -18,7 +18,7 @@
     ["import", [
       {"libraryName": "antd", "libraryDirectory": "lib", "style": "css" },
       {"libraryName": "antd-mobile", "style": true}
-    ]],
+    ]]
   ],
   "env": {
     "development":{

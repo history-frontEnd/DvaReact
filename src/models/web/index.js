@@ -1,6 +1,3 @@
-// import { routerRedux } from 'dva/router'
-// import queryString from 'query-string'
-// import config from 'utils/config'
 export default {
   namespace: 'app',
   state: {
