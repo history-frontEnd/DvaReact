@@ -1,10 +1,5 @@
 import { isProd } from './index'
 let host = isProd() ? `//172.16.0.97:8000` : '//172.16.0.97:8000'
-// let host = isProd() ? `//chd.biosan.cn` : '//chd.biosan.cn'
-// let host = isProd() ? `//114.215.126.109:8000` : '//114.215.126.109:8000'
-// let host = isProd() ? `` : '//172.16.27.184:8000'
-// 172.16.27.184:8000 172.16.0.97:8000
-// 172.16.27.184:8000
 
 module.exports = {
   name: '先心',
