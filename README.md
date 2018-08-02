@@ -25,7 +25,7 @@ $ npm start
 ### File Structure 
 
 ```bash
-5in/
+DvaReact/
 ├── /dist/            # 输出目录
 │ ├── /admin/         # 输出 - 运营后台
 │ └── /web/           # 输出 - web

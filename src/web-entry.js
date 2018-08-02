@@ -1,5 +1,5 @@
 import nprogressDva from './middlewares/nprogress-dva'
-import {Toast} from 'antd-mobile'
+import {message} from 'antd'
 import dva from 'dva'
 import createLoading from 'dva-loading'
 import createHistory from 'history/createBrowserHistory'
@@ -10,7 +10,7 @@ const app = dva({
   }),
   history: createHistory(),
   onError (error) {
-    Toast.fail(error.message)
+    message.error(error.message)
   }
 })
 
