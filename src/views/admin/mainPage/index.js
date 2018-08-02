@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'dva'
-import { Tabs } from 'antd'
+import {connect} from 'dva'
+import {Tabs} from 'antd'
 import cloneDeep from 'lodash/cloneDeep'
 import PatientList from './patientList'
 import EditPatient from './editPatientContainer'
+
+import './index.scss'
+
 const {TabPane} = Tabs
-require('./index.scss')
 
 class MainPageBody extends React.Component {
   constructor (props, context) {
@@ -16,14 +18,15 @@ class MainPageBody extends React.Component {
       defaultActiveKey: '2'
     }
   }
+
   click () {
-    console.log(`click---`)
     let {dispatch} = this.props
     dispatch({
       type: 'mainPageBody/delete',
       payload: 2
     })
   }
+
   onChange = (activeKey) => {
     console.log(`activeKey:${activeKey}`)
     let {dispatch} = this.props
@@ -34,13 +37,6 @@ class MainPageBody extends React.Component {
         activeKey
       }
     })
-    // 清空imglist
-    // if (activeKey === '2') {
-    //   dispatch({
-    //     type: 'mainPageBody/imgList',
-    //     payload: []
-    //   })
-    // }
   }
 
   onEdit = (targetKey, action) => {
@@ -57,6 +53,7 @@ class MainPageBody extends React.Component {
       }
     })
   }
+
   selectFromTablist (tabList, id) {
     for (let i = 0; tabList.length; i++) {
       let {key, content} = tabList[i]
@@ -65,6 +62,7 @@ class MainPageBody extends React.Component {
       }
     }
   }
+
   render () {
     let {defaultActiveKey} = this.state
     let {keyList, activeKey} = this.props.mainPageBody
@@ -109,4 +107,4 @@ MainPageBody.propTypes = {
   dispatch: PropTypes.func,
   loading: PropTypes.object,
 }
-export default connect(({ mainPageBody, loading }) => ({ mainPageBody, loading }))(MainPageBody)
+export default connect(({mainPageBody, loading}) => ({mainPageBody, loading}))(MainPageBody)

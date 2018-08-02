@@ -3,7 +3,7 @@
 @function px($px, $base-font-size: 54px) {
     @if (unitless($px * 1px)) {
         @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
-        @return px($px * 1px + 0px); 
+        @return px($px * 1px + 0px);
     } @else if (unit($px * 1px) == rem) {
         @return $px * 1px;
     }
@@ -12,7 +12,7 @@
 @function pxx($px, $base-font-size: 54px) {
     @if (unitless($px * 1px)) {
         @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
-        @return px($px * 1px + 0px); 
+        @return px($px * 1px + 0px);
     } @else if (unit($px * 1px) == rem) {
         @return $px * 1px;
     }
@@ -159,8 +159,8 @@
 .ant-menu-inline .ant-menu-item:after, .ant-menu-vertical .ant-menu-item:after {
     border-right: 3px solid #FF4338;
 }
-.ant-menu-item > a:hover, 
-.ant-menu-item-selected > a, 
+.ant-menu-item > a:hover,
+.ant-menu-item-selected > a,
 .ant-menu-item-selected > a:hover {
     color: #FF4338;
 }
@@ -168,8 +168,8 @@
   .ant-menu-item-selected {
     background: #FF4338!important;
   }
-  .ant-menu-item > a:hover, 
-  .ant-menu-item-selected > a, 
+  .ant-menu-item > a:hover,
+  .ant-menu-item-selected > a,
   .ant-menu-item-selected > a:hover {
     color: #FFF;
 
@@ -208,11 +208,11 @@
   height: 100%;
 }
 
-.ant-menu-item:hover, 
-.ant-menu-item-active, 
-.ant-menu:not(.ant-menu-inline) 
-.ant-menu-submenu-open, 
-.ant-menu-submenu-active, 
+.ant-menu-item:hover,
+.ant-menu-item-active,
+.ant-menu:not(.ant-menu-inline)
+.ant-menu-submenu-open,
+.ant-menu-submenu-active,
 .ant-menu-submenu-title:hover {
     color: #FF4338;
 }
@@ -267,7 +267,7 @@
     background: url('../../assets/img/close.png') no-repeat;
     background-size: contain;
     width: pxx(20);
-    height: pxx(20); 
+    height: pxx(20);
   }
 }
 
@@ -277,7 +277,7 @@
   // text-align: left;
   background-color: #fff;
   border-radius: pxx(6);
-  
+
   .logo {
     margin: 0 auto;
     background: url('../../assets/img/logo.png') no-repeat left center;
@@ -306,7 +306,7 @@
   .ant-form-explain {
     text-align: left;
   }
-  
+
   .form-tip {
     font-size: pxx(22);
     line-height: pxx(22);
@@ -326,113 +326,6 @@
  width: 100%;
  height: px(2730);
  overflow: hidden;
- .page-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    margin-left: px(-1332/2);
-    width: px(1332);
-    height: 100%;
-    .index-logo {
-      position: absolute; left: px(20); top: px(20);
-      width:px(157);
-      height: px(40);
-      background: url('../../assets/img/index-logo.png') no-repeat;
-      background-size: contain;
-    }
-    .index-title {
-      position: absolute; left: 50%; top: px(196);
-      transform: translateX(-50%);
-      font-size: px(62);
-      color: #FFFFFF;
-      letter-spacing: 0;
-    }
-    .index-title2 {
-      position: absolute; left: 50%; top: px(300);
-      transform: translateX(-50%);
-      opacity: 0.7;
-      font-size: px(24);
-      color: #FFFFFF;
-      letter-spacing: 0;
-      line-height:  px(12);
-    }
-    .index-title3 {
-      position: absolute; left: 50%; top: px(989);
-      transform: translateX(-50%);
-      font-size: px(42);
-      color: #666;
-      line-height:  px(42);
-    }
-    .index-title4 {
-      position: absolute; 
-      bottom: px(20);
-      left: 0;
-      opacity: 0.6;
-      font-size: px(14);
-      color: #000000;
-      letter-spacing: 0;
-    }
-    .index-title5 {
-      position: absolute; 
-      bottom: px(20);
-      right: 0;
-      opacity: 0.6;
-      font-size: px(14);
-      color: #000000;
-      letter-spacing: 0;
-    }
-
-    .bg1-1 {
-      position: absolute; left: 50%; top: px(300);
-      transform: translateX(-50%);
-      background: url('../../assets/img/bg1-1.png') no-repeat center;
-      top: px(340);
-      width: px(1920);
-      height: px(579);
-      background-size: contain;
-    }
-    .bg1-3 {
-      position: absolute; left: 50%;
-      transform: translateX(-50%);
-      background: url('../../assets/img/bg1-3.jpg') no-repeat center;
-      top: px(1137);
-      width: px(1321);
-      height: px(224);
-      background-size: contain;
-    }
-    .bg1-4 {
-      position: absolute; left: 50%;
-      transform: translateX(-50%);
-      background: url('../../assets/img/bg1-4.png') no-repeat center;
-      top: px(1622);
-      width: px(1210);
-      height: px(223);
-      background-size: contain;
-    }
-    .bg1-5 {
-      position: absolute; left: 50%;
-      transform: translateX(-50%);
-      background: url('../../assets/img/bg1-5.jpg') no-repeat center;
-      top: px(2130);
-      width: px(1919);
-      height: px(366);
-      background-size: contain;
-    }
- }
- .bg0-1 {
-  width: 100%; 
-  height: px(768);
-  background: url('../../assets/img/bg0-1.jpg') no-repeat center;
-  background-size: cover;
- }
-.bg0-2 {
-  width: 100%; 
-  position: absolute;
-  height: px(461);
-  top: px(1532);
-  background: url('../../assets/img/bg0-2.jpg') no-repeat center;
-  background-size: cover;
- }
  .index-footer {
   position: absolute;
   bottom: 0;
@@ -441,7 +334,7 @@
   background: #FFFFFF;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.10);
  }
-  .operations { 
+  .operations {
    position: absolute;
    left: px(488);
    top: px(361);
@@ -489,77 +382,6 @@
   }
 
 
-}
-.website2 {
-  width: 100%;
-  height: px(1000);
-  background-color: #eee;
-  .register-header {
-    background-color: #fff;
-    height: px(80);
-    margin-bottom: px(60);
-  }
-  .register-logo {
-    padding-top: px(20);
-    width: pxx(1440);
-    height: px(40);
-    margin: 0 auto;
-  }
-  .logo {
-    width: px(157);
-    height: px(40);
-    background: url('../../assets/img/register-logo.png') no-repeat left center;
-    background-size: contain;
-  }
-  .register-form-wrapper {
-    padding-top: pxx(121);
-    padding-bottom: pxx(121);
-    margin: 0 auto;
-    background-color: #fff;
-    max-width: pxx(1440);
-  }
-  .step-title {
-    text-align: center;
-    font-size: pxx(32);
-    line-height: pxx(32);
-    color: #333333;
-    letter-spacing: 0;
-  }
-  .sendEmailCode, a.sendEmailCode:hover {
-    height: pxx(72)!important;
-    line-height: pxx(72)!important;
-  }
-  a.sendEmailCode:hover {
-    color: #FF4338!important;
-  }
-  .wechat-auth-btn {
-    background: #FF4338;
-    border-radius: pxx(6);
-    font-size: pxx(20);
-    color: #FFFFFF;
-    letter-spacing: 0;
-    height: pxx(72);
-    width: pxx(436);
-    margin: pxx(200) auto;
-    display: block;
-  }
-}
-.upload-licence {
-  width: pxx(436);
-  height: pxx(96);
-  background: url('../../assets/img/uploader-bg.jpg') no-repeat;
-  background-size: contain;
-  cursor: pointer;
-  position: relative;
-  input {
-    cursor: pointer;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
 }
 .business_licence_file {
   margin-top: pxx(-20);

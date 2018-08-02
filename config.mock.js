@@ -1,24 +1,24 @@
 const mock = {
   'POST /api/account/web/v1/auth/user': {
-    "succ":true,
-    "data":[],
-    "code":"",
-    "msg":"",
-    "time":1509445822
+    'succ': true,
+    'data': [],
+    'code': '',
+    'msg': '',
+    'time': 1509445822
   },
   'PATCH /api/account/web/v1/auth/user': {
-    "succ":true,
-    "data":[],
-    "code":"",
-    "msg":"",
-    "time":1509445822
+    'succ': true,
+    'data': [],
+    'code': '',
+    'msg': '',
+    'time': 1509445822
   },
   'Get /api/account/web/v1/auth/user(.*)': {
-    "succ":true,
-    "data": {},
-    "code":"",
-    "msg":"",
-    "time":1509445822
+    'succ': true,
+    'data': {},
+    'code': '',
+    'msg': '',
+    'time': 1509445822
   },
   // GET POST 可省略
   '/api/users/1': { id: 1 },
