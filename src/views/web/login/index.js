@@ -21,8 +21,7 @@ class Login extends React.Component {
     })
   }
 
-  componentDidMount () {
-  }
+  componentDidMount () {}
 
   render () {
     const {form} = this.props

@@ -5,7 +5,7 @@ import {withRouter} from 'dva/router'
 import 'themes/web/index.scss'
 
 class Web extends React.Component {
-  state = {};
+  state = {}
 
   componentDidMount () {
     console.log('=== layout web Index ===')
