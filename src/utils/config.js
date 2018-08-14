@@ -1,5 +1,5 @@
 import { isProd } from './index'
-let host = isProd() ? `//172.16.0.97:8000` : '//172.16.0.97:8000'
+let host = isProd() ? `//172.16.0.97:8000` : '//172.16.0.53:8000'
 
 module.exports = {
   name: '先心',
