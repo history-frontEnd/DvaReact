@@ -1,0 +1,124 @@
+.searchFormContainer{
+  background: white;
+  padding: 0 20px 24px;
+  padding-top: 20px;
+  // padding-bottom: 24px;
+  :global .ant-form-item{
+    margin-bottom: 16px;
+  }
+}
+.toolBar{
+  height: 64px;
+  line-height: 64px;
+  background: white;
+  margin-top: 16px;
+  .newUser{
+   margin: 0 16px 24px; 
+  }
+}
+.warp{
+  display: flex;
+}
+.subSystemLeft{
+  margin-right: 16px;
+  width: 496px;
+  height: 486px;
+  background: white;
+  border-radius:2px;
+  border:1px solid rgba(233,233,233,1);
+  .header{
+    height: 48px;
+    line-height: 48px;
+    padding-left: 16px;
+    background:rgba(250,250,250,1);
+    display: flex;
+    align-items: center;
+    font-size:16px;
+    font-family:PingFangSC-Medium;
+    color:rgba(0,0,0,0.85);
+    .title{
+      min-width: 100px;
+    }
+  }
+  .innerLine{
+    margin: 16px 0 24px;
+    display: flex;
+    padding-left: 16px;
+    .label,.title{
+      min-width: 100px;
+    }
+    .items{
+      display: flex;
+      flex: 1;
+    }
+  }
+}
+.subSystemRight{
+  width: 496px;
+  height: 486px;
+  background: white;
+  border-radius:2px;
+  border:1px solid rgba(233,233,233,1);
+  .header{
+    height: 48px;
+    line-height: 48px;
+    padding-left: 16px;
+    background:rgba(250,250,250,1);
+    display: flex;
+    align-items: center;
+    font-size:16px;
+    font-family:PingFangSC-Medium;
+    color:rgba(0,0,0,0.85);
+  }
+  .content{
+    overflow-y: scroll;
+    height: 438px;
+  }
+  .innerLine{
+    margin: 16px 0 24px;
+    display: flex;
+    padding-left: 16px;
+    .label,.title{
+      min-width: 100px;
+    }
+    .items{
+      display: flex;
+      flex: 1;
+    }
+  }
+}
+.systemFooter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  .cancel{
+    margin-right: 10px;
+  }
+}
+.rolePanel {
+  .title {
+    height:32px;
+    line-height: 32px;
+    padding-left: 16px;
+    background:rgba(64,64,64,0.1);
+    font-size:16px;
+    font-family:PingFangSC-Medium;
+    color:rgba(0,0,0,0.85);
+  }
+}
+:global {
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+  .modal-container {
+    .ant-form-item-label{
+      box-sizing: border-box;
+      padding-right: 10px;
+    }
+    .ant-modal-header{
+      border-top: 10px solid #188EF2;
+    }
+  }
+}

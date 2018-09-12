@@ -1,0 +1,72 @@
+.spin {
+  :global .ant-spin-container {
+    height: 100vh;
+  }
+}
+
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -160px 0 0 -160px;
+  width: 320px;
+  height: 320px;
+  padding: 36px;
+  box-shadow: 0 0 100px rgba(0,0,0,.08);
+
+  button {
+    width: 100%;
+  }
+
+  p {
+    color: rgb(204, 204, 204);
+    text-align: center;
+    margin-top: 16px;
+
+    span {
+      &:first-child {
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+.logo {
+  height: 40px;
+  text-align: center;
+  margin-bottom: 48px;
+  padding-left: 40px;
+  img {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+  }
+
+  span {
+    float: left;
+    line-height: 40px;
+    vertical-align: text-bottom;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+}
+
+.ant-spin-container,
+.ant-spin-nested-loading {
+  height: 100%;
+}
+
+.loadingWrapper {
+  > div {
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+  }
+  span {
+    text-align: center;
+    display: block;
+    margin-top: 24px;
+  }
+}
